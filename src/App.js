@@ -1,25 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Input from './components/Input';
+import Output from './components/Output';
+import Credits from './components/Credits';
+import defaultArticles from './defaultArticles.json';
+import apiKey from './news-api-key.json'
 
 function App() {
+  const [articles, setArticles] = useState([]);
+  const [areArticledGenerated, setAreArticlesGenerated] = useState(false);
+  let topArticles;
+   
+  const generateRequest = () => {
+    return "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + apiKey.key
+  }
+
+  const generateArticles = () => {
+    console.log("generating articles . . .")
+    topArticles = fetch( generateRequest())
+      .then( resp =>
+        resp.json())
+      .then( resp => {
+        setArticles(resp.articles);
+        setAreArticlesGenerated(true);
+      })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id='app'>
+        <Input handleSubmit={generateArticles}> 
+        
+        </Input>
+        <Output areArticlesGenerated={areArticledGenerated} articles={articles}/>
+        <Credits/>
+      </div>
+    </>
   );
 }
 

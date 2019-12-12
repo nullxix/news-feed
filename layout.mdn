@@ -1,0 +1,34 @@
+
+-Input
+    - Go Button
+    -[LATER] change things to display
+    -[LATER] Headlines w/ tags
+    -[LATER] Display Images Option
+
+-Output
+    -Article module
+        -[LATER] default "things to display"
+        -[LATER] TAGS
+        -Headline-> click to go
+        -Source
+        -Date Published
+        -DROPDOWN - article snippet
+        -Image
+    
+
+-ATTRIBUTION LINK
+
+
+--------  COOOODE  ----------
+
+[LATER] Authentication
+[LATER] Cache
+    --let peeps know they be viewing cached content
+    --bypass cache
+
+-Make API request 
+    -has defaults
+    -overrides defaults from input
+
+--Request Literal
+    -ENGLISH PLZ (Cantonese as well?)
