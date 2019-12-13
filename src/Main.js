@@ -3,6 +3,7 @@ import Input from './components/Input';
 import Output from './components/Output';
 import Credits from './components/Credits';
 import LinkObject from './components/LinkObject';
+import AppContainer from './components/AppContainer'
 import defaultArticles from './defaultArticles.json';
 import apiKey from './news-api-key.json';
 import {Link} from 'react-router-dom';
@@ -70,7 +71,8 @@ export default function Main() {
   }
 
   return (
-    <>
+    <AppContainer>
+      <LinkObject to="/SW" label="SPAAACE" position="left"/>
       <div id='app'>
         <Input 
           handleSubmit={generateArticles} 
@@ -82,8 +84,7 @@ export default function Main() {
         <Output areArticlesGenerated={areArticledGenerated} articles={articles}/>
         <Credits/>
       </div>
-      <LinkObject to="/SW" label="SPAAACE" position="left"/>
       <LinkObject to="/ISS" label="STAAATION" position="right"/>
-    </>
+    </AppContainer>
   );
 }

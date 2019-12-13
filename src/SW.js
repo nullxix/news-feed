@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import LinkObject from "./components/LinkObject";
-import StarWarsButtons from "./sw-components/StarWarsButtons"
-import SWButton from "./sw-components/SWButton"
-import SWLoadingBar from "./sw-components/SWLoadingBar"
+import StarWarsButtons from "./sw-components/StarWarsButtons";
+import SWButton from "./sw-components/SWButton";
+import SWLoadingBar from "./sw-components/SWLoadingBar";
+import SWContent from "./sw-components/SWContent";
 
 export default function SW(props){
 
@@ -37,12 +38,31 @@ export default function SW(props){
 
         setBodyContent(<SWLoadingBar/>)
 
-        const data = await getStarWars(req);
+        let data = await getStarWars(req);
         clearInterval(theInt)
+
+        data = data.results
+        console.log(typeof data)
+        console.log(data)
+        //data = data.slice(0, 11) //setting a max data . . . thing
         
-        // setBodyContent( 
-        //     getStarWars(req)
-        // )
+        const newBodyContent = data.map(datum => {
+            const entries = Object.entries(datum)
+            return (
+                <SWContent>
+                    {Array(3).fill().map((ar, i) =>{
+                        return (
+                            <div className="sw-entry-wrapper">
+                                <span className="sw-entry">{entries[i][0]}</span>
+                                <span className="sw-entry">{entries[i][1]}</span>
+                            </div>
+                        )
+                    })}
+                </SWContent>
+            )
+        })
+
+        setBodyContent(newBodyContent);
     }
 
     const buttonNames = ['people', 'planets', 'starships', 'vehicles', 'species']

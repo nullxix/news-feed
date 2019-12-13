@@ -5,11 +5,18 @@
     --wheat-translucent: rgba(236, 222, 195, 0.5);
     --grey-wheat: rgb(119, 112, 100);
     --near-black: rgb(31, 30, 30);
+    --light-black: rgba(0, 0, 0, 0.719);
     --spacing-large: 2em;
     --default-font-size: 20pt;
+    --medium-font-size: 16pt;
     --small-font-size: 12pt;
-    --main-relative-width: 90%;
+
+    
+    --link-container-width: 10%;
+    --main-relative-width: 80%;
+
     --border-width: 1px;
+    --thick-border-width: 3px;
 }
 
 * {
@@ -31,14 +38,21 @@
     width: 100%;
 }
 
+#app-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
 #app {
+    background: rgba(0, 0, 0, 0.719);
+
     position: relative;
     min-height: 100vh;
 
     padding-top: var(--spacing-large);
     width: var(--main-relative-width);
     margin: auto;
-    background: rgba(0, 0, 0, 0.719);
 }
 
 #input, #output, .main{
@@ -95,7 +109,6 @@ button {
     font-style: italic;
 }
 
-
 details {
     font-size: var(--small-font-size);
 }
@@ -141,9 +154,15 @@ summary {
     top: 10em;
     width: 10em;
     text-align: center;
+    z-index: 1;
 
     padding: 0.3em;
     border: solid var(--wheat) var(--border-width);
+}
+
+.link-object-container {
+    background: pink;
+    top: 0;
 }
 
 .link-object.position-left {
@@ -166,7 +185,97 @@ summary {
     flex-grow: 1;
 }
 
+.sw-button {
+    padding: 0.5em;
+}
+
 .sw-button.active {
     background: var(--wheat);
     color: var(--near-black);
+}
+
+.sw-content {
+    margin: 1em 0.5em;
+    border: solid var(--wheat) var(--thick-border-width);
+    width: 90%;
+}
+
+.sw-entry {
+    padding: .5em;
+}
+
+.sw-entry-wrapper:nth-child(n) {
+    margin: 1em;
+    padding-left: 2em;
+}
+
+.sw-entry-wrapper:nth-child(1) {
+    margin: 1em;
+    border-bottom: solid var(--wheat) var(--border-width);
+    padding-left: .5em;
+}
+
+#iss {
+    height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#iss-button{
+    margin: 2em;
+}
+
+@media only screen and (max-width: 700px) {
+    :root {
+        --default-font-size: 19px;
+    }
+
+    #checkbox-container {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 700px) and (min-width: 601px){
+    :root {
+        --default-font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 600px){
+    :root {
+        --default-font-size: 17px;
+    }
+
+    .checkbox-wrapper {
+        width: 100%
+    }
+
+    #app {
+        background: var(--near-black);   
+    }
+
+    #sw-buttons {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .sw-content:nth-child(1), .sw-content:nth-child(2){
+        width: 80%   
+    }
+
+    
+}
+
+@media only screen and (max-width: 450px){
+    :root {
+        --default-font-size: 16px;
+    }
+
+    .sw-content:nth-child(1), .sw-content:nth-child(2) {
+        width: 75%;
+    }
 }

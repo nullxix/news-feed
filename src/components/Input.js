@@ -30,7 +30,6 @@ export default function Input(props){
 
             <button> Let's do this </button>  
         </form>
-
         </div>
     )
 }
