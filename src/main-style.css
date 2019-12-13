@@ -1,5 +1,7 @@
 :root {
-    --wheat: rgb(236, 222, 195);
+    --wheat: #ecdec3;
+    --button-alive: #AFF0D1;
+    --button-dead: #AA88BA;
     --wheat-translucent: rgba(236, 222, 195, 0.5);
     --grey-wheat: rgb(119, 112, 100);
     --near-black: rgb(31, 30, 30);
@@ -39,7 +41,7 @@
     background: rgba(0, 0, 0, 0.719);
 }
 
-#input, #output{
+#input, #output, .main{
     background: none;
 
     margin: var(--spacing-large) auto;
@@ -83,7 +85,6 @@ button {
     padding: 0.3em;
 }
 
-
 .title-bar{
     font-size: 14pt;
     font-weight: 900;
@@ -110,5 +111,62 @@ summary:focus {
 }
 
 summary {
-    font-size: var(--small-font-size)
+    font-size: var(--small-font-size);
+}
+
+.checkbox-wrapper {
+    background: var(--button-dead);
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.checkbox-wrapper.active{
+    background: var(--button-alive);
+    color: var(--near-black)
+}
+
+.checkbox {
+    color: inherit;
+}
+
+#checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: left;
+}
+
+.link-object {
+    position: absolute;
+    top: 10em;
+    width: 10em;
+    text-align: center;
+
+    padding: 0.3em;
+    border: solid var(--wheat) var(--border-width);
+}
+
+.link-object.position-left {
+    transform: translateX(-40%) rotate(-90deg) ;
+    left: 0;
+}
+
+.link-object.position-right {
+    transform: translateX(40%) rotate(90deg) ;
+    right: 0;
+}
+
+.link-literal {
+    text-decoration: none;
+}
+
+#sw-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-grow: 1;
+}
+
+.sw-button.active {
+    background: var(--wheat);
+    color: var(--near-black);
 }
